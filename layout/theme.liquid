@@ -296,6 +296,9 @@
         document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
+
+    {{ 'atg-reset-styles.css' | asset_url | stylesheet_tag: preload: true }}
+    <script src="{{ 'atg-reset-scripts.js' | asset_url }}" defer="defer"></script>
   </head>
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
