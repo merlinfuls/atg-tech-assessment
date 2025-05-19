@@ -298,7 +298,14 @@
     </script>
 
     {{ 'atg-reset-styles.css' | asset_url | stylesheet_tag: preload: true }}
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <link rel="stylesheet" href="{{ 'flickity.min.css' | asset_url }}" media="screen">
     <script src="{{ 'atg-reset-scripts.js' | asset_url }}" defer="defer"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!-- JavaScript -->
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <script src="{{ 'flickity.pkgd.min.js' | asset_url }}"></script>
   </head>
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
@@ -312,7 +319,7 @@
 
     {% sections 'header-group' %}
 
-    <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+    <main id="MainContent" class="content-for-layout focus-none atg-{{  template.name }}" role="main" tabindex="-1">
       {{ content_for_layout }}
     </main>
 
