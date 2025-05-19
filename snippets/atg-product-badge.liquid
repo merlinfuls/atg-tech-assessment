@@ -1,0 +1,27 @@
+{% assign badgeArray = '' %}
+
+{% if product.tags contains 'badge_New Arrival' %}
+  {% assign badgeArray = badgeArray | append: 'New' | append: ','  %}
+{% endif %}
+{% if product.tags contains 'badge_Best Seller' or product.tags contains 'badge_Bestseller' %}
+  {% assign badgeArray = badgeArray | append: 'Bestseller' | append: ','  %}
+{% endif %}
+
+{% for tag in product.tags %}
+  {% if tag contains 'badge_' and tag != 'badge_Online Exclusive' and tag != 'badge_New Arrival' and tag != 'badge_Best Seller' and tag != 'badge_Bestseller'%}
+    {% assign badgeArray = badgeArray | append: tag | remove: 'badge_' | append: ','  %}
+  {% endif %}
+{% endfor %}
+
+{% assign badgeArray = badgeArray | split: ',' %}
+
+
+{% if badgeArray != blank %}
+  <div class="atg-badge text-center">
+    {% for badge in badgeArray limit: 2 %}
+      {% if badge != blank %}
+        <span class="atg-badge-span fontSize-xs">{{ badge }}</span>
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endif %}

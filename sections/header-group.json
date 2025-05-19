@@ -25,6 +25,7 @@
       "block_order": [
         "announcement-bar-0"
       ],
+      "disabled": true,
       "settings": {
         "auto_rotate": false,
         "change_slides_speed": 5,
@@ -37,13 +38,41 @@
     },
     "header": {
       "type": "header",
+      "blocks": {
+        "toggle_button_f3exKG": {
+          "type": "toggle_button",
+          "disabled": true,
+          "settings": {
+            "toggle_button_label": "Men",
+            "toggle_image": "shopify://shop_images/Frame_60393.png",
+            "toggle_button_label_secondary": "Women",
+            "toggle_image_secondary": "shopify://shop_images/women-icon.png"
+          }
+        },
+        "buttons_B4Uc8R": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Take The Quiz",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "toggle_button_f3exKG",
+        "buttons_B4Uc8R"
+      ],
       "settings": {
         "logo_position": "middle-left",
         "mobile_logo_position": "center",
         "menu": "main-menu",
-        "menu_type_desktop": "dropdown",
-        "sticky_header_type": "always",
+        "menu_type_desktop": "mega",
+        "sticky_header_type": "none",
         "show_line_separator": true,
+        "enable_cut_header": true,
         "color_scheme": "scheme-1",
         "menu_color_scheme": "scheme-1",
         "enable_country_selector": true,
