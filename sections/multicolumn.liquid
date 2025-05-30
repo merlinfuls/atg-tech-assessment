@@ -2,6 +2,13 @@
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
+
+  {% if section.settings.image_width == 'custom' %}
+    .multicolumn-card__image-wrapper--custom-width {
+      --icon-width: {{ section.settings.icon_width }}px;
+      width: var(--icon-width) !important;
+    }
+  {% endif %}
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
@@ -30,6 +37,11 @@
       data-cascade
     {% endif %}
   >
+    {% if section.settings.subtitle != blank %}
+      <div class="atg-subtitle">
+        {{ section.settings.subtitle }}
+      </div>
+    {% endif %}
     {%- unless section.settings.title == blank -%}
       <div class="title-wrapper-with-link title-wrapper--self-padded-mobile title-wrapper--no-top-margin multicolumn__title">
         <h2 class="title inline-richtext {{ section.settings.heading_size }}">
@@ -75,7 +87,7 @@
               style="--animation-order: {{ forloop.index }};"
             {% endif %}
           >
-            <div class="multicolumn-card content-container">
+            <div class="multicolumn-card content-container{% if section.settings.hover_image == true %} hover-image{% endif %}">
               {%- if block.settings.image != blank -%}
                 {% if section.settings.image_ratio == 'adapt' or section.settings.image_ratio == 'circle' %}
                   {% assign spaced_image = true %}
@@ -119,27 +131,36 @@
                 </div>
               {%- endif -%}
               <div class="multicolumn-card__info">
-                {%- if block.settings.title != blank -%}
-                  <h3 class="inline-richtext">{{ block.settings.title }}</h3>
-                {%- endif -%}
-                {%- if block.settings.text != blank -%}
-                  <div class="rte">{{ block.settings.text }}</div>
-                {%- endif -%}
-                {%- if block.settings.link_label != blank -%}
-                  <a
-                    class="link animate-arrow"
-                    {% if block.settings.link == blank %}
-                      role="link" aria-disabled="true"
-                    {% else %}
-                      href="{{ block.settings.link }}"
+                <div class="multicolumn-card__inner">
+                  <div class="multicolumn-card__text-content">
+                    {%- if block.settings.title != blank -%}
+                      <h3 class="inline-richtext">{{ block.settings.title }}</h3>
+                    {%- endif -%}
+                    {%- if block.settings.text != blank -%}
+                      <div class="rte">{{ block.settings.text }}</div>
+                    {%- endif -%}
+                  </div>
+                  <div class="multicolumn-card__link">
+                    {% if block.settings.link_label != blank %}
+                      <a
+                        class="link atg-animate-arrow"
+                        {% if block.settings.link == blank %}
+                          role="link" aria-disabled="true"
+                        {% else %}
+                          href="{{ block.settings.link }}"
+                        {% endif %}
+                      >
+                        {% comment %} {{- block.settings.link_label | escape -}} {% endcomment %}
+                        {% comment %} <span class="svg-wrapper"
+                          ><span class="icon-wrap">&nbsp;{{ 'icon-arrow.svg' | inline_asset_content }}</span></span
+                        >  {% endcomment %}
+                        <span class="atg-svg-wrapper">
+                          <span class="icon-wrap">{{ 'icon-arrow.svg' | inline_asset_content }}</span>
+                        </span> 
+                      </a>
                     {% endif %}
-                  >
-                    {{- block.settings.link_label | escape -}}
-                    <span class="svg-wrapper"
-                      ><span class="icon-wrap">&nbsp;{{ 'icon-arrow.svg' | inline_asset_content }}</span></span
-                    >
-                  </a>
-                {%- endif -%}
+                  </div>
+                </div>
               </div>
             </div>
           </li>
@@ -206,6 +227,11 @@
       "label": "t:sections.multicolumn.settings.title.label"
     },
     {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+    {
       "type": "select",
       "id": "heading_size",
       "options": [
@@ -252,10 +278,25 @@
         {
           "value": "full",
           "label": "t:sections.multicolumn.settings.image_width.options__3.label"
+        },
+        {
+          "value": "custom",
+          "label": "Custom"
         }
       ],
       "default": "full",
       "label": "t:sections.multicolumn.settings.image_width.label"
+    },
+    {
+      "type": "range",
+      "id": "icon_width",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Custom image width",
+      "default": 50,
+      "visible_if": "{{section.settings.image_width == 'custom'}}"
     },
     {
       "type": "select",
@@ -348,6 +389,12 @@
       "label": "t:sections.all.colors.label",
       "default": "scheme-1"
     },    
+    {
+      "type": "checkbox",
+      "id": "hover_image",
+      "default": false,
+      "label": "Hover image"
+    },
     {
       "type": "header",
       "content": "t:sections.multicolumn.settings.header_mobile.content"

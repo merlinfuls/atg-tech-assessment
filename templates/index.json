@@ -15,16 +15,16 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Welcome",
+            "heading": "<strong>Great things never came from comfort zones.</strong>",
             "heading_size": "h0"
           }
         },
         "button": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "Shop all",
+            "button_label_1": "Shop Now",
             "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
+            "button_style_secondary_1": false,
             "button_label_2": "",
             "button_link_2": "",
             "button_style_secondary_2": false
@@ -36,11 +36,12 @@
         "button"
       ],
       "settings": {
+        "image": "shopify://shop_images/Rectangle_3.png",
         "image_overlay_opacity": 40,
         "image_height": "large",
         "image_behavior": "none",
-        "desktop_content_position": "bottom-center",
-        "desktop_content_alignment": "center",
+        "desktop_content_position": "bottom-left",
+        "desktop_content_alignment": "left",
         "show_text_box": false,
         "color_scheme": "scheme-3",
         "stack_images_on_mobile": false,
@@ -48,55 +49,373 @@
         "show_text_below": false
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
-      "settings": {
-        "collection": "all",
-        "products_to_show": 8,
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "columns_desktop": 4,
-        "enable_desktop_slider": false,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "color_scheme": "scheme-1",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "standard",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 44,
-        "padding_bottom": 36
-      }
-    },
-    "1744564350c4918019": {
-      "type": "apps",
+    "new_marquee_bar_BJECYx": {
+      "type": "new-marquee-bar",
       "blocks": {
-        "powerful_form_builder_app_block_acqKzi": {
-          "type": "shopify://apps/powerful-form-builder/blocks/app-block/e4bcb1eb-35b2-42e6-bc37-bfe0e1542c9d",
+        "marquee_item_i9HKcV": {
+          "type": "marquee_item",
           "settings": {
-            "shortcode": "<div class=\"globo-formbuilder\" data-id=\"ODU0Njg=\"></div>"
+            "marquee_text": "High Quality Ingredients",
+            "marquee_image": "shopify://shop_images/Star_1.png"
+          }
+        },
+        "marquee_item_CqRJfw": {
+          "type": "marquee_item",
+          "settings": {
+            "marquee_text": "Independently Certified",
+            "marquee_image": "shopify://shop_images/Star_1.png"
+          }
+        },
+        "marquee_item_6HJMKK": {
+          "type": "marquee_item",
+          "settings": {
+            "marquee_text": "Expert Driven",
+            "marquee_image": "shopify://shop_images/Star_1.png"
+          }
+        },
+        "marquee_item_GeyP3y": {
+          "type": "marquee_item",
+          "settings": {
+            "marquee_text": "Shipped Internationally",
+            "marquee_image": "shopify://shop_images/Star_1.png"
           }
         }
       },
       "block_order": [
-        "powerful_form_builder_app_block_acqKzi"
+        "marquee_item_i9HKcV",
+        "marquee_item_CqRJfw",
+        "marquee_item_6HJMKK",
+        "marquee_item_GeyP3y"
       ],
+      "name": "New Marquee Bar",
+      "settings": {}
+    },
+    "rich_text_nXdFBE": {
+      "type": "rich-text",
+      "blocks": {
+        "caption_UKQHHA": {
+          "type": "caption",
+          "settings": {
+            "caption": "COMFORTABLY UNCOMFORTABLE",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "large"
+          }
+        },
+        "heading_qtV873": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Start with your Goals</strong>",
+            "heading_size": "h1"
+          }
+        },
+        "text_DHUxdh": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We cannot become what we want to be by remaining what we are.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "caption_UKQHHA",
+        "heading_qtV873",
+        "text_DHUxdh"
+      ],
+      "name": "t:sections.rich-text.presets.name",
       "settings": {
-        "include_margins": true
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": false,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "multicolumn_k4VVi9": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_EfnfdU": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Image.png",
+            "title": "<strong>Sleep</strong>",
+            "text": "<p>Optimize your sleep patterns. <br/><br/></p>",
+            "link_label": "zz",
+            "link": "shopify://collections"
+          }
+        },
+        "column_VfaTdj": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Image_1.png",
+            "title": "<strong>Cognitive Function</strong>",
+            "text": "<p>Enhance your brain's performance and connectivity</p>",
+            "link_label": "K",
+            "link": "shopify://collections"
+          }
+        },
+        "column_TeRVDy": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Image_2.png",
+            "title": "<strong>Foundational Health</strong>",
+            "text": "<p>Promoting healthy, natural deep sleep day to day</p>",
+            "link_label": "A",
+            "link": "shopify://collections"
+          }
+        },
+        "column_g4zLDk": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Image_3.png",
+            "title": "<strong>Athletic Performance</strong>",
+            "text": "<p>Increase your healthy tissue, muscle, and energy<br/><br/></p>",
+            "link_label": "A",
+            "link": "shopify://collections"
+          }
+        },
+        "column_N6hitC": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Image_4.png",
+            "title": "<strong>Hormone Support</strong>",
+            "text": "<p>Boost your mood, libido, and vitality</p>",
+            "link_label": "A",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_EfnfdU",
+        "column_VfaTdj",
+        "column_TeRVDy",
+        "column_g4zLDk",
+        "column_N6hitC"
+      ],
+      "custom_css": [
+        ".media {border-radius: 8px;}"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "",
+        "subtitle": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "icon_width": 50,
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 5,
+        "column_alignment": "left",
+        "background_style": "none",
+        "color_scheme": "",
+        "hover_image": true,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection_p6qKF9": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "collection": "supplements",
+        "products_to_show": 5,
+        "title": "<strong> Supplements</strong>",
+        "heading_size": "h1",
+        "description": "<p>🌟 Trending</p>",
+        "show_description": false,
+        "description_style": "subtitle",
+        "columns_desktop": 3,
+        "enable_desktop_slider": true,
+        "full_width": true,
+        "show_view_all": true,
+        "view_all_style": "link",
+        "bg_color": "#F6F6F5",
+        "color_scheme": "",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "standard",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "multicolumn_KyCCLb": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_B8j4YW": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Group_38770.png",
+            "title": "We Make It Easy",
+            "text": "<p>Personalized Solutions & Guidance Mean You Get Just What You Need Nothing More</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_6PnWA6": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Group_38770_1.png",
+            "title": "Clean & Effective",
+            "text": "<p>Proven Ingredients, not Artificial, Crafted By Experts For Optimal Effectiveness</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_QK3wXQ": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Group_38770_2.png",
+            "title": "Your Free Dietitian",
+            "text": "<p>Every Gainful Subscriber Gets Free, 1:1 Access Their Own Registered Dietitian.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_3mqxqE": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Group_38770_3.png",
+            "title": "Made For You",
+            "text": "<p>Performance is Personal. Personalized & Customizable Products For Your Needs, Body & Goals</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_B8j4YW",
+        "column_6PnWA6",
+        "column_QK3wXQ",
+        "column_3mqxqE"
+      ],
+      "custom_css": [
+        ".multicolumn-card__text-content .inline-richtext {font-weight: bold; padding-bottom: 2.5rem;}",
+        ".multicolumn.background-primary .multicolumn-card {background: #fff;}",
+        ".title-wrapper-with-link .title {width: 40%;}"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "<strong>Clean Supplements - Made For You  </strong>",
+        "subtitle": "🧐 Why Health & Fitness",
+        "heading_size": "h1",
+        "image_width": "custom",
+        "icon_width": 50,
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 4,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "color_scheme": "",
+        "hover_image": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "new_tabbe_collection_XcHkGX": {
+      "type": "new-tabbe-collection",
+      "blocks": {
+        "tab_XMpQDy": {
+          "type": "tab",
+          "settings": {
+            "collection": "supplements",
+            "viewall": true,
+            "viewall_text": "View all"
+          }
+        },
+        "tab_HNckMq": {
+          "type": "tab",
+          "settings": {
+            "collection": "sleep",
+            "viewall": true,
+            "viewall_text": "View all"
+          }
+        }
+      },
+      "block_order": [
+        "tab_XMpQDy",
+        "tab_HNckMq"
+      ],
+      "name": "Tabs",
+      "settings": {
+        "title": "Bundles",
+        "heading_size": "h1",
+        "description": "<p>📦 Goals Specific</p>",
+        "useslider": true,
+        "bg_color": "",
+        "color_scheme": "",
+        "show_rating": true,
+        "quick_add": "standard",
+        "card_color_scheme": "scheme-2"
+      }
+    },
+    "image_banner_UhdYxf": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_dCAQ97": {
+          "type": "heading",
+          "settings": {
+            "heading": "The Next Generation is Here",
+            "heading_size": "h1"
+          }
+        },
+        "text_aUcJFg": {
+          "type": "text",
+          "settings": {
+            "text": "Innovative Engineering. Intelligent Design. Meet The Plunge All-I.",
+            "text_style": "body"
+          }
+        },
+        "buttons_npUUGj": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Take The Plunge",
+            "button_link_1": "shopify://pages/contact",
+            "button_style_secondary_1": false,
+            "button_label_2": "Dive Deeper",
+            "button_link_2": "shopify://collections",
+            "button_style_secondary_2": true
+          }
+        }
+      },
+      "block_order": [
+        "heading_dCAQ97",
+        "text_aUcJFg",
+        "buttons_npUUGj"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/Rectangle_478.png",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-left",
+        "desktop_content_alignment": "left",
+        "show_text_box": false,
+        "color_scheme": "scheme-3",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": true
       }
     }
   },
   "order": [
     "image_banner",
-    "featured_collection",
-    "1744564350c4918019"
+    "new_marquee_bar_BJECYx",
+    "rich_text_nXdFBE",
+    "multicolumn_k4VVi9",
+    "featured_collection_p6qKF9",
+    "multicolumn_KyCCLb",
+    "new_tabbe_collection_XcHkGX",
+    "image_banner_UhdYxf"
   ]
 }

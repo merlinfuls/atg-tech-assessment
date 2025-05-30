@@ -51,6 +51,7 @@
       {%- if product.price_varies == false and product.compare_at_price_varies %} price--no-compare{% endif -%}
       {%- if show_badges %} price--show-badge{% endif -%}
     "
+    data-product-price={{ money_price }}
   >
     <div class="price__container">
       {%- comment -%}
@@ -59,6 +60,9 @@
           - div.price__sale: Displayed when a variant is a sale
       {%- endcomment -%}
       <div class="price__regular">
+        {% if product_card_homepage == true %}
+          {{ 'products.product.add_to_cart' | t }} - 
+        {% endif %}
         {%- if product.quantity_price_breaks_configured? -%}
           {%- if show_compare_at_price and compare_at_price -%}
             {%- unless product.price_varies == false and product.compare_at_price_varies %}

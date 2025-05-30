@@ -1,0 +1,25 @@
+{% assign badgeArray = '' %}
+
+
+{% for tag in product.tags %}
+  {% if tag contains 'tag_' and tag != 'badge_Online Exclusive' and tag != 'badge_New Arrival' and tag != 'badge_Best Seller' and tag != 'badge_Bestseller'%}
+    {% assign badgeArray = badgeArray | append: tag | remove: 'tag_' | append: ','  %}
+  {% endif %}
+{% endfor %}
+
+{% assign badgeArray = badgeArray | split: ',' %}
+
+
+{% if badgeArray != blank %}
+  {% assign scheme = settings.color_schemes | where: "id", section.settings.color_scheme | first %}
+  <div class="atg-tag text-center">
+    {% for badge in badgeArray %}
+      {% if badge != blank %}
+        <div class="atg-tag-span" style="background-color: {{ tag_color_bg }}">
+          <img src="{{ 'Ellipse 4.svg' | asset_url }}" class="atg-tag-icon" />
+          <span class="atg-tag-text">{{ badge }}</span>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endif %}

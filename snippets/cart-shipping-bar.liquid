@@ -1,0 +1,161 @@
+{% assign shipping_value = settings.shipping_value %}
+{% assign cart_total = cart.total_price %}
+{% assign initial_value = 0 %}
+{% assign shipping_value_left = shipping_value | minus: cart_total %}
+{% comment %} {% assign progress_percent = cart_total | times: 100 | divided_by: shipping_value %} {% endcomment %}
+
+<div class="shipping-progress-wrapper">
+  {% if shipping_value_left > 0 %}
+    <p class="shipping-savings-message">
+      You are <strong>{{ shipping_value_left | money }}</strong> away from eligible for free shipping
+    </p>
+  {% else %}
+    <p class="shipping-savings-message success">
+      🎉 You’ve qualified for free shipping!
+    </p>
+  {% endif %}
+
+  <div class="bar-progress-wrapper">
+    <div class="shipping-progress-labels">
+      <span>{{ initial_value | money }}</span>
+    </div>
+    <div class="shipping-progress-bar">
+      <div class="progress-bar-fill" id="progressFill"></div>
+    </div>
+    <div class="shipping-progress-labels">
+      <span>{{ shipping_value | money }}</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .shipping-progress-wrapper {
+    text-align: center;
+    margin: 0;
+    font-family: 'Rubik', sans-serif;
+    padding: 2.6rem 3.0rem 2.4rem 3.0rem;
+  }
+  .shipping-savings-message {
+    font-size: 16px;
+    margin-bottom: 8px;
+    font-weight: 500;
+    margin-top: 0;
+  }
+  .shipping-savings-message.success {
+    color: green;
+  }
+  .bar-progress-wrapper{
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 10px;
+  }
+  .shipping-progress-bar {
+    height: 3px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    max-width: 44.3rem;
+  }
+  .progress-bar-fill {
+      display: block !important;
+    height: 100%;
+    background-color: #000;
+    width: 0%;
+    transition: width 0.6s ease;
+  }
+  .shipping-progress-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #555;
+  }
+</style>
+
+<script>
+    if (typeof Shopify === 'undefined') {
+    window.Shopify = {};
+  }
+
+  if (typeof Shopify.formatMoney !== 'function') {
+    Shopify.formatMoney = function(cents, format) {
+      if (typeof cents === 'string') {
+        cents = cents.replace('.', '');
+      }
+
+      var value = '';
+      var placeholderRegex = /\{\{\s*(\w+)\s*\}\}/;
+
+      function formatWithDelimiters(number, precision = 2, thousands = ',', decimal = '.') {
+        if (isNaN(number) || number == null) return 0;
+
+        number = (number / 100.0).toFixed(precision);
+
+        var parts = number.split('.');
+        var dollars = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, thousands);
+        var cents = parts[1] ? decimal + parts[1] : '';
+
+        return dollars + cents;
+      }
+
+      switch (format || "{{ shop.money_format }}") {
+        case '${{amount}}':
+          value = formatWithDelimiters(cents, 2, ',', '.');
+          break;
+        case '${{amount_no_decimals}}':
+          value = formatWithDelimiters(cents, 0, ',', '.');
+          break;
+        case '${{amount_with_comma_separator}}':
+          value = formatWithDelimiters(cents, 2, '.', ',');
+          break;
+        case '${{amount_no_decimals_with_comma_separator}}':
+          value = formatWithDelimiters(cents, 0, '.', ',');
+          break;
+        default:
+          value = formatWithDelimiters(cents, 2);
+      }
+
+      return format.replace(placeholderRegex, value);
+    };
+  }
+  function updateShippingProgressFromCart() {
+    fetch('/cart.js')
+      .then(response => response.json())
+      .then(cart => {
+        var progressFill = document.getElementById('progressFill');
+        var shippingThreshold = {{ shipping_value | json }};
+        var cartTotal = cart.total_price;
+        var progressPercent = Math.min((cartTotal / shippingThreshold) * 100, 100);
+
+        if (progressFill) {
+          progressFill.style.width = progressPercent + '%';
+        }
+
+        const message = document.querySelector('.shipping-savings-message');
+        if (message) {
+            if (cartTotal < shippingThreshold) {
+                var amountLeft = shippingThreshold - cartTotal;
+                var formattedAmount = Shopify.formatMoney(amountLeft, '{{ shop.money_format }}');
+                message.innerHTML = `You are <strong>${formattedAmount}</strong> away from eligible for free shipping`;
+                message.classList.remove("success");
+            } else {
+                message.innerHTML = `🎉 You’ve qualified for free shipping!`;
+                message.classList.add("success");
+            }
+        }
+
+      });
+  }
+
+  // Initial load
+  document.addEventListener('DOMContentLoaded', updateShippingProgressFromCart);
+
+  // Monitor cart updates using mutation observer (works with AJAX carts)
+  const observer = new MutationObserver(() => {
+    updateShippingProgressFromCart();
+  });
+
+  const cartDrawer = document.querySelector('.cart-drawer') || document.body;
+  observer.observe(cartDrawer, { childList: true, subtree: true });
+</script>

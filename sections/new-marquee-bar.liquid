@@ -1,0 +1,52 @@
+<div class="new-marquee-bar">
+    <div class="marquee">
+        <div class="marquee-content">
+            {% for block in section.blocks %}
+                {% if block.settings.marquee_image != nil or block.settings.marquee_text != nil %}
+                    <div class="marquee-item">
+                        {% if block.settings.marquee_image %}
+                            <div class="marquee-image">
+                                <img src="{{ block.settings.marquee_image | img_url: '200x' }}">
+                            </div>
+                        {% endif %}
+                        <span>{{ block.settings.marquee_text }}</span>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% schema %}
+    {
+        "name": "New Marquee Bar",
+        "class": "Marquee_Bar",
+        "settings": [
+            
+        ],
+        "blocks": [
+            {
+                "type": "marquee_item",
+                "name": "Marquee Item",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "marquee_text",
+                        "label": "Marquee Text"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "marquee_image",
+                        "label": "Marquee Image"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "New Marquee Bar",
+                "category": "Custom"
+            }
+        ]
+    }
+{% endschema %}
