@@ -406,25 +406,6 @@
         "mobile_content_alignment": "center",
         "show_text_below": true
       }
-    },
-    "featured_blog_x7mWT8": {
-      "type": "featured-blog",
-      "name": "t:sections.featured-blog.presets.name",
-      "settings": {
-        "blog": "balanced-diet",
-        "post_limit": 3,
-        "heading": "Latest Articles",
-        "heading_size": "h1",
-        "subtitle": "✍️ Blogs",
-        "columns_desktop": 3,
-        "show_view_all": true,
-        "show_image": true,
-        "show_date": true,
-        "show_author": true,
-        "color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
     }
   },
   "order": [
@@ -435,7 +416,6 @@
     "featured_collection_p6qKF9",
     "multicolumn_KyCCLb",
     "new_tabbe_collection_XcHkGX",
-    "image_banner_UhdYxf",
-    "featured_blog_x7mWT8"
+    "image_banner_UhdYxf"
   ]
 }

@@ -127,6 +127,8 @@
     "show_cart_note": false,
     "cart_drawer_collection": "",
     "cart_color_scheme": "scheme-1",
+    "enabled_shipping_bar": true,
+    "shipping_value": 10000,
     "sections": {
       "main-password-header": {
         "type": "main-password-header",
@@ -182,7 +184,8 @@
           "button": "#ffffff",
           "button_label": "#000000",
           "secondary_button_label": "#ffffff",
-          "shadow": "#121212"
+          "shadow": "#121212",
+          "tag": "#121212"
         }
       },
       "scheme-4": {
@@ -193,7 +196,8 @@
           "button": "#ffffff",
           "button_label": "#121212",
           "secondary_button_label": "#ffffff",
-          "shadow": "#121212"
+          "shadow": "#121212",
+          "tag": "#121212"
         }
       },
       "scheme-5": {
@@ -204,7 +208,8 @@
           "button": "#ffffff",
           "button_label": "#334fb4",
           "secondary_button_label": "#ffffff",
-          "shadow": "#121212"
+          "shadow": "#121212",
+          "tag": "#121212"
         }
       }
     }
