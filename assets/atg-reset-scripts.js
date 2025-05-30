@@ -3,7 +3,7 @@ $(function () {
   toggleButtons();
   infiniteMarquee();
   // productCard();
-  initCustomSectionSlider();
+    initCustomSectionSlider();
 });
 
 
@@ -58,13 +58,13 @@ function productCard() {
 productCard();
 
 // Set up MutationObserver to handle dynamically loaded content
-const observer = new MutationObserver((mutations) => {
+const productCardObserver = new MutationObserver((mutations) => {
   // Recheck whenever new nodes are added
   productCard();
 });
 
 // Observe the entire document (or a more specific container if possible)
-observer.observe(document.body, {
+productCardObserver.observe(document.body, {
   childList: true,
   subtree: true,
 });
@@ -81,12 +81,13 @@ initCustomSectionSlider = () =>{
     draggable: false,
     resize: true,
     prevNextButtons: true,
+    arrowShape: "M36.7,76.9c1.9,1.4,1.9,3.8,0,5.7c-0.6,0.6-1.6,0.9-2.8,0.9c-0.9,0-1.9-0.3-2.8-0.9L2.2,52.8 c-1.9-1.4-1.9-4.3,0-5.7L30,18.3c1.4-1.4,3.8-1.4,5.2,0c1.9,1.4,1.9,4.3,0,5.7L10.2,50L36.7,76.9z M95.2,46.2c1.9,0,3.8,1.9,3.8,4.3 c0,2.4-1.9,3.8-3.8,3.8H13c-2.4,0-3.8-1.4-3.8-3.8c0-2.4,1.4-4.3,3.8-4.3H95.2z"
   });
 
 }
 
 function getProductPrices() {
-  const productItems = document.querySelectorAll('.atg-items-slider .grid__item');
+  const productItems = document.querySelectorAll('.grid__item');
   const priceData = [];
 
   productItems.forEach((product, index) => {
@@ -206,49 +207,32 @@ document.addEventListener('DOMContentLoaded', () => {
  
 });
 
-// document.addEventListener("DOMContentLoaded", function () {
-//   initSubscriptionToggle();
-// });
+function setupProductCardHover() {
+  // Hide all .atg-pc-bottom elements initially
+  document.querySelectorAll('.atg-pc-bottom').forEach(bottom => {
+    bottom.style.display = 'none';
+  });
 
-// function initSubscriptionToggle() {
-//   document.querySelectorAll('.sls-option').forEach((radio) => {
-//     radio.addEventListener('change', function () {
-//       // Remove 'sls-active' from all and apply to selected
-//       document.querySelectorAll('.sls-option-container').forEach(container => {
-//         container.classList.remove('sls-active');
-//       });
-  
-//       const selectedContainer = this.closest('.sls-option-container');
-//       selectedContainer.classList.add('sls-active');
-  
-//       // Always show original price — find it from the one-time purchase block
-//       const originalContainer = document.querySelector('.sls-option-container input[value="one_time"]').closest('.sls-option-container');
-//       const originalPrice = originalContainer.querySelector('.original-price')?.textContent.trim();
-  
-//       // Update the price block to always show original price
-//       const priceRegular = document.querySelector('.price-item--regular');
-//       const priceSale = document.querySelector('.price-item--sale');
-//       if (priceRegular) priceRegular.textContent = originalPrice;
-//       if (priceSale) priceSale.textContent = originalPrice;
-  
-//       // Only show discounted price if subscription is selected
-//       const priceContainer = document.querySelector('.quick-add__submit .price__container');
-//       let discountedDiv = priceContainer.querySelector('.new-discounted-price');
-  
-//       if (!discountedDiv) {
-//         discountedDiv = document.createElement('div');
-//         discountedDiv.className = 'new-discounted-price';
-//         priceContainer.appendChild(discountedDiv);
-//       }
-  
-//       if (this.value === 'subscription') {
-//         const discounted = selectedContainer.querySelector('.discounted-price')?.textContent.trim();
-//         discountedDiv.textContent = discounted;
-//         discountedDiv.style.display = 'block';
-//       } else {
-//         discountedDiv.style.display = 'none';
-//       }
-//     });
-//   });
-// }
+  // Add hover event listeners to each .atg-pc-top
+  document.querySelectorAll('.atg-pc-top').forEach(top => {
+    const card = top.closest('.card-wrapper .card');
+    if (!card) return;
+    const bottom = card.querySelector('.atg-pc-bottom');
+    if (!bottom) return;
+
+    top.addEventListener('mouseenter', () => {
+      top.style.display = 'none';
+      bottom.style.display = '';
+    });
+
+    // When mouse leaves .atg-pc-bottom, revert to original state
+    card.addEventListener('mouseleave', () => {
+      bottom.style.display = 'none';
+      top.style.display = '';
+    });
+  });
+}
+
+// Run after DOM is loaded
+document.addEventListener('DOMContentLoaded', setupProductCardHover);
 

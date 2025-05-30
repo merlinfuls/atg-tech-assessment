@@ -46,7 +46,7 @@
 
   if section.settings.collection.all_products_count > section.settings.products_to_show
     assign products_to_display = section.settings.products_to_show
-    assign more_in_collection = true
+    
   endif
 
   assign columns_mobile_int = section.settings.columns_mobile | plus: 0
@@ -70,11 +70,6 @@
     data-id="{{ section.id }}"
   >
     <div class="collection__title title-wrapper title-wrapper--no-top-margin page-width{% if show_mobile_slider %} title-wrapper--self-padded-tablet-down{% endif %}{% if show_desktop_slider %} collection__title--desktop-slider{% endif %}">
-      {%- if section.settings.title != blank -%}
-        <h2 class="center title inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-          {{ section.settings.title }}
-        </h2>
-      {%- endif -%}
       {%- if section.settings.description != blank
         or section.settings.show_description
         and section.settings.collection.description != empty
@@ -87,8 +82,13 @@
           {%- endif %}
         </div>
       {%- endif -%}
-      {%- if section.settings.show_view_all and more_in_collection -%}
-        <div class="center collection__view-all{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      {%- if section.settings.title != blank -%}
+        <h2 class="center title inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+          {{ section.settings.title }}
+        </h2>
+      {%- endif -%}
+      {%- if section.settings.show_view_all -%}
+        <div class="center collection__view-all capitalize{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
           <a
             href="{{ section.settings.collection.url }}"
             class="{% if section.settings.view_all_style == 'link' %}link underlined-link{% elsif section.settings.view_all_style == 'solid' %}button{% else %}button button--secondary{% endif %}"
@@ -279,6 +279,93 @@
   </div>
 </div>
 
+<script>
+  $( function() {
+    function tabSlider(){
+        $('.atg-items-slider.slick-initialized ').slick('unslick');
+        $('.atg-items-slider').slick({
+            dots: false,
+            infinite: false,
+            speed: 300,
+            slidesToShow: 4,
+            slidesToScroll: 4,
+            nextArrow: '<button type="button" class="slick-next"><img src="{{ 'nextArrow.svg' | asset_url }}" /></button>',
+            prevArrow: '<button type="button" class="slick-prev"><img src="{{ 'prevArrow.svg' | asset_url }}" /></button>',
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                        infinite: true
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        });
+    }
+  });
+</script>
+
+<style>
+  .flickity-button .flickity-button-icon {
+    display: none;
+  }
+  .flickity-prev-next-button.previous {
+    background: url('{{ "prevArrow.svg" | asset_url }}') no-repeat center center;
+    {% comment %} background-size: 12px 10px; {% endcomment %}
+    width: 40px; /* or your preferred button size */
+    height: 40px;
+    left: 33%;
+  }
+  .flickity-prev-next-button.next {
+    background: url('{{ "nextArrow.svg" | asset_url }}') no-repeat center center;
+    {% comment %} background-size: 12px 10px; {% endcomment %}
+    width: 40px;
+    height: 40px;
+    right: 33%;
+  }
+  .flickity-prev-next-button{
+    top: -102px;
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+  }
+</style>
 {% schema %}
 {
   "name": "t:sections.featured-collection.name",
