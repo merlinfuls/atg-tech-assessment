@@ -51,6 +51,7 @@
         },
         "buttons_B4Uc8R": {
           "type": "buttons",
+          "disabled": true,
           "settings": {
             "button_label_1": "Take The Quiz",
             "button_link_1": "",

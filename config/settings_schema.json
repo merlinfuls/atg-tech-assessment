@@ -81,6 +81,12 @@
             "id": "shadow",
             "label": "t:settings_schema.colors.settings.shadow.label",
             "default": "#121212"
+          },
+          {
+            "type": "color",
+            "id": "tag",
+            "label": "Product tag background",
+            "default": "#121212"
           }
         ],
         "role": {
@@ -1449,6 +1455,17 @@
         "id": "cart_color_scheme",
         "label": "t:sections.all.colors.label",
         "default": "scheme-1"
+      },
+      {
+        "type": "checkbox",
+        "id": "enabled_shipping_bar",
+        "label": "Enabled Shipping Bar",
+      },
+      {
+        "type": "number",
+        "id": "shipping_value",
+        "label": "Shipping Value",
+        "default": 0,
       }
     ]
   }

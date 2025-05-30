@@ -1914,27 +1914,27 @@ Jumpstart Reset Styles Framework 0.0.2 | updated 29 May 2019
     padding: 0 10px;
   }
 
-  .sls-option-container.seal-table{
+  .grid__item .sls-option-container.seal-table{
     padding: 4px !important;
   }
-  .atg-items-slider .sealsubs-container .sls-option-container.sls-active{
+  .grid__item .sealsubs-container .sls-option-container.sls-active{
     border: 1px solid #000 !important;
     border-radius: 4px;
     padding: 4px;
   }
-  .atg-items-slider .sealsubs-container{
+   .grid__item .sealsubs-container{
     display: flex;
     font-size: 12px;
   }
-  .atg-items-slider .quick-add__submit{
+  .grid__item .quick-add__submit{
     background: #1B1F23;
     font-size: 14px;
     color: #fff;
   }
-  .atg-items-slider .price{
+  .grid__item .price{
     color: #fff;
   }
-  .atg-items-slider .sls-label-container{
+  .grid__item .sls-label-container{
     font-size: 12px;
   }
 
@@ -1949,21 +1949,54 @@ Jumpstart Reset Styles Framework 0.0.2 | updated 29 May 2019
     border-radius: 4px;
   }
   .atg-tag{
+    grid-row-start: 1 ;
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 7px;
   }
   .atg-tag-span{
+    display: flex;
     font-size: 10px;
     padding: 5px 10px;
-    background-color: #F6F6F5;
     border-radius: 4px;
+    margin: 2px;
+  }
+  .atg-tag-span:first-child{
+    margin-left: 0;
   }
   .atg-tag-span .atg-tag-icon{
-    margin-right: 4px;
+    padding-right: 4px;
   }
   .atg-product-subs{
     font-size: 13px;
     margin: 5px 0;
+  }
+
+  .card .card__information{
+    grid-row-start: 1 ;
+    grid-template-rows: max-content minmax(0, 1fr) max-content auto;
+  }
+  .card .card-information{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .card .dupe-button{
+    font-size: 13px !important;
+    line-height: normal;
+    font-weight: 400;
+    min-height: unset;
+    padding: 5px 15px;
+    border-radius: 4px;
+    text-decoration: none;
+    background-color: #000;
+    border: 1px solid transparent;
+    color: #fff;
+  }
+  .card .dupe-button:hover{
+    text-decoration: none;
+    border: 1px solid #000;
   }
 
   /* Blog post section */
@@ -2050,20 +2083,9 @@ Jumpstart Reset Styles Framework 0.0.2 | updated 29 May 2019
     max-width: none;
     height: 100%;
   }
-  /* 
 
-  .atg-blogposts .blog__posts.grid--3-col-desktop .atg-blogpost-left .article-card{
-    display: block;
-    position: relative;
-  }
-
-
-  .atg-blogposts .blog__posts.grid--3-col-desktop .atg-blogpost-right .blog__post{
-    width: 100%;
-    max-width: none;
-    height: 100%;
-  }
- */
+  /* TABBED COLLECTION */
+  
 
 /*------------------------------------------------------------------
 [6. Collection Page]
@@ -2076,7 +2098,62 @@ Jumpstart Reset Styles Framework 0.0.2 | updated 29 May 2019
 /*------------------------------------------------------------------
 [8. Cart Pages]
 */
-
+  .drawer__inner{
+    width: 58rem;
+    padding: 0 !important;
+  }
+  .drawer__heading{
+    font-size: 3.4rem;
+    font-weight: 500;
+  }
+  .drawer__header{
+    justify-content: flex-start;
+    padding: 2.4rem 3.0rem;
+    border-bottom: .1rem solid rgba(var(--color-foreground), .2);
+  }
+  .drawer__footer{
+    padding: 3.4rem 3.0rem;
+  }
+  .drawer__close{
+    top: 25px;
+    right: 17px;
+    color: #000;
+  }
+  .drawer__close .svg-wrapper{
+    width: 15px;
+    height: 15px;
+  }
+  #CartDrawer .cart-count-bubble{
+    width: 3.6rem;
+    height: 3.6rem;
+    position: relative;
+    margin: 0 1.2rem 1rem;
+    bottom: unset;
+    left: unset;
+  }
+  #CartDrawer .cart-count-bubble span{
+    font-size: 18px;
+  }
+  #CartDrawer-ColumnProduct, #CartDrawer-ColumnTotal{
+    display: none;
+  }
+  .cart-drawer .cart-items th{
+    border-bottom: unset;
+  }
+  .cart-drawer .totals__total-value{
+    font-size: 24px;
+    font-weight: 600;
+  }
+  .cart-drawer .totals__total{
+    font-size: 20px;
+    font-weight: 500;
+  }
+  .cart-drawer .tax-note{
+    font-size: 1.2rem;
+  }
+  .drawer__cart-items-wrapper{
+    padding: 0 3.0rem 2.4rem 3.0rem;
+  }
 
 /*------------------------------------------------------------------
 [8. Cart Pages]
@@ -2089,6 +2166,12 @@ Jumpstart Reset Styles Framework 0.0.2 | updated 29 May 2019
 /*------------------------------------------------------------------
 [10. Header]
 */
+  .atg-header__background .header--middle-left{
+    grid-template-columns: auto auto auto;
+  }
+  .atg-header__background .header--middle-left .header__inline-menu{
+    text-align: center;
+  }
 
 /*------------------------------------------------------------------
 [11. Account pages]
@@ -4701,6 +4784,15 @@ Jumpstart Reset Styles Framework 0.0.2 | updated 29 May 2019
   /*------------------------------------------------------------------
   [17.10 Header]
   */
+    .atg--cut_header{
+      position: relative;
+      top: unset;
+      left: unset;
+      transform: unset;
+    }
+    .atg--cut_header .header{
+      border-radius: unset;
+    }
 
   
   /*------------------------------------------------------------------

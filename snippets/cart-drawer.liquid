@@ -62,7 +62,15 @@
         </div>
       {%- endif -%}
       <div class="drawer__header">
-        <h2 class="drawer__heading">{{ 'sections.cart.title' | t }}</h2>
+        <h2 class="drawer__heading">Your Bag</h2>
+        {%- if cart != empty -%}
+            <div class="cart-count-bubble">
+              {%- if cart.item_count < 100 -%}
+                <span aria-hidden="true">{{ cart.item_count }}</span>
+              {%- endif -%}
+              <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+            </div>
+          {%- endif -%}
         <button
           class="drawer__close"
           type="button"
@@ -79,6 +87,9 @@
           class=" is-empty"
         {% endif %}
       >
+        {% if settings.enabled_shipping_bar and cart != empty %}
+          {% render 'cart-shipping-bar' %}
+        {% endif %}
         <form
           action="{{ routes.cart_url }}"
           id="CartDrawer-Form"
